@@ -13,22 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
 
-Route::get('/products', function () {
-    return view('shop');
-});
+Route::get('/about', [\App\Http\Controllers\MainController::class, 'about']);
 
-Route::get('/about', function () {
-    return view('shop');
-});
+Route::get('/contact', [\App\Http\Controllers\MainController::class, 'contact']);
 
-Route::get('/products/item', function () {
-    return view('shop-single');
-});
+Route::get('/products', [\App\Http\Controllers\MainController::class, 'products']);
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/products/{category}', [\App\Http\Controllers\MainController::class, 'category']);
+
+Route::get('/products/{category?}/{product?}', [\App\Http\Controllers\MainController::class, 'product']);
