@@ -24,10 +24,10 @@
             </div>
         </div>
         <div class="card-body">
-            <a href="products/womens/item1" class="h3 text-decoration-none">{{ $product->name }}</a>
+            <a href="products/womens/item1" class="h3 text-decoration-none fw-bold">{{ $product->name }}</a>
             <ul class="w-100 list-unstyled d-block justify-content-between mb-0">
                 <!-- <li>M/L/X/XL</li> -->
-                <li>{{ $product->category->name}}</li>
+                <!-- <li>{{ $product->category->name}}</li> -->
                 <li>{{ $product->description }}</li>
                 <!-- <li class="pt-2">
                     <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>

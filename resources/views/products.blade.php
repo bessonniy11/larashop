@@ -11,11 +11,11 @@
                 <h1 class="h2 pb-4">Категории</h1>
                 <ul class="list-unstyled templatemo-accordion">
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        <a class="collapsed collapsed-item d-flex justify-content-between h3 text-decoration-none" href="#">
                             Gender
                             <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
-                        <ul class="collapse show list-unstyled pl-3">
+                        <ul class="collapse list-unstyled pl-3">
                             @foreach($categories as $category)
                                 <li>
                                     <a class="text-decoration-none" href="products/{{ $category->code }}">
@@ -26,7 +26,7 @@
                         </ul>
                     </li>
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        <a class="collapsed collapsed-item d-flex justify-content-between h3 text-decoration-none" href="#">
                             Sale
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
@@ -36,7 +36,7 @@
                         </ul>
                     </li>
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        <a class="collapsed collapsed-item d-flex justify-content-between h3 text-decoration-none" href="#">
                             Product
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>

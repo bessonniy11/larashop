@@ -233,3 +233,11 @@ body.preload .loading-container .loading-spinner:after {
 .category-name.active {
   color: #69bb7e !important;
 }
+
+.collapsed-item i {
+  transition: all 0.3s ease 0s;
+}
+
+.collapsed-item.active i {
+  transform: rotate(180deg);
+}
