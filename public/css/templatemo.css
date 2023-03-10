@@ -241,3 +241,16 @@ body.preload .loading-container .loading-spinner:after {
 .collapsed-item.active i {
   transform: rotate(180deg);
 }
+
+@media (max-width: 550px) {
+  .name-table-colum {
+    white-space: nowrap;
+    max-width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .name-table-colum-first {
+    width: 50px !important;
+  }
+}
