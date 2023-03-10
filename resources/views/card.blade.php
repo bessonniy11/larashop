@@ -13,13 +13,16 @@
                         href="{{last(request()->segments()) == 'products' ? 'products/' . $product->category->code. '/' . $product->code :  $product->category->code. '/' . $product->code}}">
                             <i class="far fa-eye"></i>
                         </a>
-                        <!-- <a 
-                        class="btn btn-success text-white mt-2" 
-                        href="{{ route('products', [$product->category->code, $product->code])}}">
-                            <i class="far fa-eye"></i>
-                        </a> -->
                     </li>
-                    <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
+                    <form action="{{ route('basket-add', $product)}}" method="POST">
+                        <li>
+                            <button class="btn btn-success text-white mt-2" type="submit">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </li>
+                        @csrf
+                    </form>
+                    
                 </ul>
             </div>
         </div>
