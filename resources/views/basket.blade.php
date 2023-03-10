@@ -25,36 +25,41 @@
                                 {{$product->name}}
                             </a>
                         </td>
-                        <td><span class="badge text-dark">1</span>
+                        <td><span class="badge text-dark">{{$product->pivot->count}}</span>
                                 <div class="btn-group form-inline">
-                                    <form action="text" method="POST">
-                                        <button type="submit" class="btn btn-danger" href=""><span
-                                                class="glyphicon glyphicon-minus" aria-hidden="true">-</span></button>
+                                    <form action="{{ route('basket-remove', $product)}}" method="POST">
+                                        <button type="submit" class="btn btn-danger" style="margin-right: 5px;">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true">-</span>
+                                        </button>
                                         @csrf
                                     </form>
                                     <form action="{{ route('basket-add', $product)}}" method="POST">
-                                        <button type="submit" class="btn btn-success"><span
-                                                class="glyphicon glyphicon-plus" aria-hidden="true">+</span></button>
+                                        <button type="submit" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-plus" aria-hidden="true">+</span>
+                                        </button>
                                         @csrf
                                     </form>
                                 </div>
                             </td>
                             <td>{{$product->price}} руб.</td>
-                            <td>{{$product->price}} руб.</td>
+                            <td>{{$product->getPriceForCount()}} руб.</td>
                         </tr>
                     <tr>
                 @endforeach
-                    <td colspan="3">text</td>
+                </tr>
+                    <td colspan="3">Общая стоимость</td>
+                    <td>{{ $order->getFullPrice() }} руб.</td>
                 </tr>
                 </tbody>
             </table>
+            @if ($order->products)
             <div class="row">
                 <div class="form-inline pull-right">
                     <form method="POST" action="text">
                         @csrf
-                        <label for="coupon">text</label>
-                        <input class="form-control" type="text" name="coupon">
-                        <button type="submit" class="btn btn-success">text</button>
+                        <label  class="mb-3" for="coupon">Промокод</label>
+                        <input class="form-control mb-3 w-25" type="text" name="coupon">
+                        <button type="submit" class="btn btn-success">Проверить</button>
                     </form>
                 </div>
             </div>
@@ -63,9 +68,10 @@
                 <br>
                 <div class="btn-group pull-right" role="group">
                     <a type="button" class="btn btn-success"
-                    href="{{ route('basket-place') }}">text</a>
+                    href="{{ route('basket-place') }}">К оформлению заказа</a>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
