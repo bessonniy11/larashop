@@ -13,14 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
 
-Route::get('/about', [\App\Http\Controllers\MainController::class, 'about']);
+Route::get('/about', [\App\Http\Controllers\MainController::class, 'about'])->name('about');
 
-Route::get('/contact', [\App\Http\Controllers\MainController::class, 'contact']);
+Route::get('/contact', [\App\Http\Controllers\MainController::class, 'contact'])->name('contact');
 
-Route::get('/products', [\App\Http\Controllers\MainController::class, 'products']);
+Route::get('/products', [\App\Http\Controllers\MainController::class, 'products'])->name('products');
 
-Route::get('/products/{category}', [\App\Http\Controllers\MainController::class, 'category']);
+Route::get('/products/{category}', [\App\Http\Controllers\MainController::class, 'category'])->name('category');
 
-Route::get('/products/{category?}/{product?}', [\App\Http\Controllers\MainController::class, 'product']);
+Route::get('/products/{category?}/{product?}', [\App\Http\Controllers\MainController::class, 'product'])->name('product');
+
+Route::get('/basket', [\App\Http\Controllers\MainController::class, 'basket'])->name('basket');
+
+Route::get('/basket/place', [\App\Http\Controllers\MainController::class, 'basketPlace'])->name('basket-place');
