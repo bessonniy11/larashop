@@ -11,18 +11,22 @@
                 <h1 class="h2 pb-4">Категории</h1>
                 <ul class="list-unstyled templatemo-accordion">
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        <a class="collapsed collapsed-item d-flex justify-content-between h3 text-decoration-none" href="#">
                             Gender
                             <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
-                        <ul class="collapse show list-unstyled pl-3">
+                        <ul class="collapse list-unstyled pl-3">
                             @foreach($categories as $category)
-                                <li><a class="text-decoration-none" href="products/{{ $category->code }}">{{ $category->name }}</a></li>
+                                <li>
+                                    <a class="text-decoration-none" href="products/{{ $category->code }}">
+                                        {{ $category->name }}
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        <a class="collapsed collapsed-item d-flex justify-content-between h3 text-decoration-none" href="#">
                             Sale
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
@@ -32,7 +36,7 @@
                         </ul>
                     </li>
                     <li class="pb-3">
-                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                        <a class="collapsed collapsed-item d-flex justify-content-between h3 text-decoration-none" href="#">
                             Product
                             <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                         </a>
@@ -50,16 +54,21 @@
                     <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="products">Все</a>
+                                <a class="category-name h3 text-dark text-decoration-none mr-3 {{last(request()->segments()) == 'products' ? 'active' : ''}}" 
+                                href="/products">
+                                    Все
+                                </a>
                             </li>
                             @foreach($categories as $category)
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="/products/mens">
+                                <a class="category-name h3 text-dark text-decoration-none mr-3 {{last(request()->segments()) == $category->code ? 'active' : ''}}" 
+                                href="/products/{{ $category->code }}">
                                     {{ $category->name }}
                                 </a>
                             </li>
                             @endforeach
                         </ul>
+                        <!-- <div class="h3 text-dark text-decoration-none mr-3">Количество({{ $products->count() }})</div> -->
                     </div>
                     <div class="col-md-6 pb-4">
                         <div class="d-flex">
@@ -72,7 +81,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    @include('card')
+                @foreach($products as $product)
+                    @include('card', compact('product'))
+                @endforeach
                 </div>
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">

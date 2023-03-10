@@ -10,17 +10,29 @@ https://templatemo.com/tm-559-zay-shop
 $(document).ready(function() {
 
     // Accordion
-    var all_panels = $('.templatemo-accordion > li > ul').hide();
-
-    $('.templatemo-accordion > li > a').click(function() {
-        // console.log('Hello world!');
-        var target =  $(this).next();
-        if(!target.hasClass('active')){
-            all_panels.removeClass('active').slideUp();
-            target.addClass('active').slideDown();
+    const all_panels = document.querySelectorAll('.templatemo-accordion > li > ul');
+    const all_panels_links = document.querySelectorAll('.templatemo-accordion > li > a');
+    if (all_panels_links && all_panels) {
+      all_panels_links.forEach(link => {
+        link.addEventListener('click', ()=> {
+          all_panels.forEach(el => {el.classList.remove('show')});
+          if (!link.classList.contains('active')) {
+            all_panels_links.forEach(el => {el.classList.remove('active')});
+            link.classList.add('active');
+            link.nextElementSibling.classList.add('show');
+          } else {
+            link.classList.remove('active');
+            link.nextElementSibling.classList.remove('show');
+          }
+        })
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.templatemo-accordion')) {
+          all_panels.forEach(el => {el.classList.remove('show')});
+          all_panels_links.forEach(el => {el.classList.remove('active')});
         }
-      return false;
-    });
+      })
+    }
     // End accordion
 
     // Product detail
@@ -55,3 +67,11 @@ $(document).ready(function() {
     // End roduct detail
 
 });
+
+// PRELOAD 
+
+document.addEventListener("DOMContentLoaded", ready);
+
+function ready() {
+	document.querySelector("body").classList.remove('preload')
+}

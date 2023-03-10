@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -21,13 +22,18 @@ class MainController extends Controller
 
     public function products() {
         $categories = Category::get();
-        return view('products', compact('categories'));
+        $products = Product::get();
+        return view('products', compact('categories'), compact('products'));
     }
 
-    // todo проверить, скорее всего дальше эта функция будет не нужна
-    public function categories() {
+    public function categories($code) {
         $categories = Category::get();
-        return view('categories', compact('categories'));
+        $category = Category::where('code', $code)->first();
+        // dd($category);
+        $products = Product::where('category_id', $category->id)->get();
+        return view('products', compact('categories'), compact('products'));
+        // $categories = Category::where('code', $code)->first();
+        // return view('products', compact('categories'));
     }
 
     public function category($code) {
