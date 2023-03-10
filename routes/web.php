@@ -21,7 +21,7 @@ Route::get('/contact', [\App\Http\Controllers\MainController::class, 'contact'])
 
 Route::get('/products', [\App\Http\Controllers\MainController::class, 'products'])->name('products');
 
-Route::get('/products/{category}', [\App\Http\Controllers\MainController::class, 'category'])->name('category');
+Route::get('/products/{category}', [\App\Http\Controllers\MainController::class, 'categories'])->name('categories');
 
 Route::get('/products/{category?}/{product?}', [\App\Http\Controllers\MainController::class, 'product'])->name('product');
 

@@ -55,3 +55,11 @@ $(document).ready(function() {
     // End roduct detail
 
 });
+
+// PRELOAD 
+
+document.addEventListener("DOMContentLoaded", ready);
+
+function ready() {
+	document.querySelector("body").classList.remove('preload')
+}
