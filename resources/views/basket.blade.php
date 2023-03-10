@@ -10,10 +10,10 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Название</th>
-                    <th>Количество</th>
-                    <th>Цена</th>
-                    <th>Стоимость</th>
+                    <th class="name-table-colum name-table-colum-first">Название</th>
+                    <th class="name-table-colum">Количество</th>
+                    <th class="name-table-colum">Цена</th>
+                    <th class="name-table-colum">Стоимость</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -21,11 +21,12 @@
                     <tr>
                         <td>
                             <a href="{{ route('products', [$product->category->code, $product->code])}}">
-                                <img height="56px" src="../../img/shop_01.jpg">
+                                <img height="56px" src="../../img/shop_01.jpg" style="margin-right: 5px;">
                                 {{$product->name}}
                             </a>
                         </td>
-                        <td><span class="badge text-dark">{{$product->pivot->count}}</span>
+                        <td>
+                            <span class="badge text-dark">{{$product->pivot->count}}</span>
                                 <div class="btn-group form-inline">
                                     <form action="{{ route('basket-remove', $product)}}" method="POST">
                                         <button type="submit" class="btn btn-danger" style="margin-right: 5px;">
