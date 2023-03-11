@@ -242,6 +242,11 @@ body.preload .loading-container .loading-spinner:after {
   transform: rotate(180deg);
 }
 
+.order-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 @media (max-width: 550px) {
   .name-table-colum {
     white-space: nowrap;

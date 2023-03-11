@@ -16,15 +16,24 @@ class BasketController extends Controller
         return view('basket', compact('order'));
     }
 
+    public function basketCOnfirm() {
+        
+    }
+
     public function basketPlace() {
-        return view('basket-place');
+        $orderId = session('orderId');
+        if (is_null($orderId)) {
+            return redirect()->route('index');
+        }
+        $order = Order::find($orderId);
+        return view('order', compact('order'));
     }
 
     public function basketAdd($productId) 
     {
         $orderId = session('orderId');
         if (is_null($orderId)) {
-            $order = Order::create()->id;
+            $order = Order::create();
             session(['orderId' => $order->id]);
         } else {
             $order = Order::find($orderId);
