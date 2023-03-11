@@ -247,6 +247,12 @@ body.preload .loading-container .loading-spinner:after {
   margin: 0 auto;
 }
 
+.starter-template .alert {
+  margin-top: 15px;
+  padding: 20px 15px;
+  text-align: center;
+}
+
 @media (max-width: 550px) {
   .name-table-colum {
     white-space: nowrap;

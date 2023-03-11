@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+@section('title', 'Корзина')
 
 @section('content')
 <div class="container py-5">

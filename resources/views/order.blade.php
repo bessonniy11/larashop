@@ -7,7 +7,7 @@
         <h1>Оформление заказа</h1>
         <div class="row justify-content-center">
                 <p>Сумма заказа: <b>{{ $order->getFullPrice() }} руб.</b></p>
-                <form action="" method="POST">
+                <form action="{{ route('basket-confirm') }}" method="POST">
                     <div>
                         <p>Укажите свои имя и номер телефона, чтобы наш менеджер мог с вами связаться</p>
 
@@ -27,13 +27,13 @@
                             </div>
                             <br>
                             @guest
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="name" class="control-label col-lg-offset-3 col-lg-2">Email: </label>
                                     <div class="">
                                         <input type="text" name="email" id="email" required value="" class="form-control">
                                     </div>
                                 </div>
-                                <br>
+                                <br> -->
                                 <!-- <div class="form-group">
                                     <label for="name" class="control-label col-lg-offset-3">Адрес доставки:</label>
                                     <div class="">
