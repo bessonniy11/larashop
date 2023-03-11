@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
@@ -16,15 +17,37 @@ class BasketController extends Controller
         return view('basket', compact('order'));
     }
 
+    public function basketConfirm(Request $request) 
+    {
+        $orderId = session('orderId');
+        if (is_null($orderId)) {
+            return redirect()->route('index');
+        }
+        $order = Order::find($orderId);
+        $success = $order->saveOrder($request->name, $request->phone);
+        if ($success) {
+            session()->flash('success', 'Ваш заказ принят в обработку');
+        } else {
+            session()->flash('warning', 'Произошла ошибка');
+        }
+
+        return redirect()->route('index');
+    }
+
     public function basketPlace() {
-        return view('basket-place');
+        $orderId = session('orderId');
+        if (is_null($orderId)) {
+            return redirect()->route('index');
+        }
+        $order = Order::find($orderId);
+        return view('order', compact('order'));
     }
 
     public function basketAdd($productId) 
     {
         $orderId = session('orderId');
         if (is_null($orderId)) {
-            $order = Order::create()->id;
+            $order = Order::create();
             session(['orderId' => $order->id]);
         } else {
             $order = Order::find($orderId);
@@ -36,6 +59,9 @@ class BasketController extends Controller
         } else {
             $order->products()->attach($productId);
         }
+
+        $product = Product::find($productId);
+        session()->flash('success', 'Добавлен товар ' . $product->name);
         return redirect()->route('basket');
     }
 
@@ -56,6 +82,9 @@ class BasketController extends Controller
                 $pivotRow->update();
             }
         }
+
+        $product = Product::find($productId);
+        session()->flash('warning', 'Удалён товар ' . $product->name);
         return redirect()->route('basket');
     }
 }

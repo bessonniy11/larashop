@@ -1,5 +1,6 @@
-@extends('master')
+@extends('layouts.master')
 
+@section('title', 'Корзина')
 
 @section('content')
 <div class="container py-5">
@@ -53,8 +54,8 @@
                 </tr>
                 </tbody>
             </table>
-            @if ($order->products)
-            <div class="row">
+            <!-- @if ($order->products) -->
+            <!-- <div class="row">
                 <div class="form-inline pull-right">
                     <form method="POST" action="text">
                         @csrf
@@ -63,16 +64,16 @@
                         <button type="submit" class="btn btn-success">Проверить</button>
                     </form>
                 </div>
-            </div>
+            </div> -->
             <br>
             <div class="row">
                 <br>
-                <div class="btn-group pull-right" role="group">
+                <div class="form-inline pull-right" role="group">
                     <a type="button" class="btn btn-success"
                     href="{{ route('basket-place') }}">К оформлению заказа</a>
                 </div>
             </div>
-            @endif
+            <!-- @endif -->
         </div>
     </div>
 </div>

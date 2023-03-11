@@ -124,6 +124,19 @@ https://templatemo.com/tm-559-zay-shop
         </div>
     </div>
 
+    <!-- Start Alert -->
+    <div class="container">
+        <div class="starter-template">
+            @if(session()->has('success'))
+                <p class="alert alert-success">{{ session()->get('success') }}</p>
+            @endif
+            @if(session()->has('warning'))
+                <p class="alert alert-warning">{{ session()->get('warning') }}</p>
+            @endif
+        </div>
+    </div>
+    <!-- End Alert -->
+
 
 
     <!-- Start Content -->
