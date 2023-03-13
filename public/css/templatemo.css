@@ -265,3 +265,55 @@ body.preload .loading-container .loading-spinner:after {
     width: 50px !important;
   }
 }
+
+/*account modal*/
+.account {
+    position: relative;
+    cursor: pointer;
+}
+
+.fa {
+    transition: 0.3s;
+}
+
+.fa:hover {
+    color: #59ab6e !important;
+}
+.account-nav-modal {
+    position: absolute;
+    background: #fff;
+    left: -15px;
+    top: 25px;
+    width: 63px;
+    padding: 5px 0px;
+    border-radius: 7px;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    z-index: 5;
+    transition: 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.account-nav-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.account-nav-modal__item {
+    color: #212529!important;
+    text-decoration: none;
+    display: block;
+    border: none !important;
+    background: transparent;
+    font-weight: 300;
+    font-size: 18px !important;
+    width: 100%;
+    outline: none !important;
+    padding: 3px 5px;
+    transition: 0.3s;
+}
+
+.account-nav-modal__item:hover {
+    color: #59ab6e !important;
+    background: rgba(156, 163, 175, 0.23);
+}

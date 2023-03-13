@@ -68,10 +68,24 @@ $(document).ready(function() {
 
 });
 
-// PRELOAD 
+// PRELOAD START
 
 document.addEventListener("DOMContentLoaded", ready);
 
 function ready() {
 	document.querySelector("body").classList.remove('preload')
 }
+
+// PRELOAD END
+
+// ACCOUNT MODAL START
+
+document.addEventListener('click',(e)=> {
+    if (e.target.closest('.account')) {
+        document.querySelector('.account-nav-modal').classList.add('active');
+    } else {
+        document.querySelector('.account-nav-modal').classList.remove('active');
+    }
+});
+
+// ACCOUNT MODAL END

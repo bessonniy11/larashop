@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Auth::routes([
+    'reset' => false,
+    'confirm' => false,
+    'verify' => false,
+]);
+
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('get-logout');
 
 Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
 
@@ -32,7 +41,3 @@ Route::get('/products', [\App\Http\Controllers\MainController::class, 'products'
 Route::get('/products/{category}', [\App\Http\Controllers\MainController::class, 'categories'])->name('categories');
 
 Route::get('/products/{category?}/{product?}', [\App\Http\Controllers\MainController::class, 'product'])->name('product');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
